@@ -1,0 +1,46 @@
+﻿@model List<PruebaTecnicaCDGA.Models.ViewModels.ListdbEmpleadoVM>
+@{
+    ViewBag.Title = "Lista de Empleados";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row-cols-auto" style="text-align: right; padding: 10px;">
+    <a href="~/dbEmpleado/NuevoEmpleado" class="btn btn-success">NUEVO EMPLEADO</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>DIRECCION</th>
+                <th>TELEFONO</th>
+                <th>PUESTO</th>
+                <th>DPI</th>
+                <th>FECHA NAC</th>
+                <th>FECHA REGS.</th>
+                <th>ACCIONES</th>
+            </tr>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.idEmpleado</td>
+                    <td>@e.Nombre</td>
+                    <td>@e.Apellido</td>
+                    <td>@e.Direccion</td>
+                    <td>@e.Telefono</td>
+                    <td>@e.idPuesto</td>
+                    <td>@e.DPI</td>
+                    <td>@e.FechaNacimiento</td>
+                    <td>@e.FechaIngresoRegistro</td>
+                    <td>
+                        <a class="btn btn-info" href="~/dbEmpleado/EditarEmpleado/@e.idEmpleado">Editar</a>
+                        <a class="btn btn-danger" href="~/dbEmpleado/EliminarEmpleado/@e.idEmpleado">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

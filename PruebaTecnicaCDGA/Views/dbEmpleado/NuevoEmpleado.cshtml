@@ -1,0 +1,59 @@
+﻿@model PruebaTecnicaCDGA.Models.ViewModels.dbEmpleadoVM
+@{
+    ViewBag.Title = "Registro de nuevo empleado";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("NuevoEmpleado","dbEmpleado",FormMethod.Post)) { 
+    <div class="row">
+        <div class="col-md-12 form-control">
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.Nombre, null, new { @class = "bold" })
+                @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.Apellido, null, new { @class = "bold" })
+                @Html.TextBoxFor(d => d.Apellido, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Apellido, null, new { @class = "alert-red" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.Direccion, null, new { @class = "bold" })
+                @Html.TextBoxFor(d => d.Direccion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Direccion, null, new { @class = "alert-red" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.Telefono, null, new { @class = "bold" })
+                @Html.TextBoxFor(d => d.Telefono, "", new { @class = "form-control" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.idPuesto, null, new { @class = "bold" })
+                @Html.DropDownListFor(d=>d.idPuesto, new List<SelectListItem> {
+                                        new SelectListItem {Text = "Seleccionar puesto",Value="0",Selected=true },
+                                        new SelectListItem { Text = "Jefe", Value = "1"},
+                                        new SelectListItem { Text = "Empleado", Value = "2"}
+                                        }, new { @class = "form-control" }
+                                     )
+                @Html.ValidationMessageFor(d => d.idPuesto, null, new { @class = "alert-red" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.DPI, null, new { @class = "bold" })
+                @Html.TextBoxFor(d => d.DPI, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.DPI, null, new { @class = "alert-red" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.FechaNacimiento, null, new { @class = "bold" })<br />
+                @Html.EditorFor(d => d.FechaNacimiento, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.FechaNacimiento, null, new { @class = "alert-red" })
+            </div>
+            <div class="mb-lg-3">
+                @Html.LabelFor(d => d.FechaIngresoRegistro, null, new { @class = "bold" })<br />
+                @Html.EditorFor(d => d.FechaIngresoRegistro, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.FechaIngresoRegistro, null, new { @class = "alert-red" })
+            </div>
+            <div style="text-align:right; padding: 10px;">
+                <input type="submit" value="GUARDAR DATOS" class="btn btn-success" />
+            </div>
+        </div>
+        </div>
+    }
